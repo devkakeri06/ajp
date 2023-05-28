@@ -1,0 +1,55 @@
+INSERT:-
+
+
+import java.sql.*;
+
+
+public class SQLPreparedStatementInsert {
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/test", "root", "Qwertypassword69");
+
+            PreparedStatement stmt = con.prepareStatement("insert into details1 values (?,?)");
+            stmt.setString(1,"user4");
+            stmt.setString(2,"pass4");
+            int i = stmt.executeUpdate();
+            System.out.println(i + " Records inserted..");
+            
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+
+
+
+RETREIVE:-
+
+
+
+import java.sql.*;
+
+
+public class SQLPreparedStatementInsert {
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/test", "root", "Qwertypassword69");
+
+            PreparedStatement stmt = con.prepareStatement("select * from details1");
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                    System.out.println(rs.getString(1) + " " +
+                    rs.getString(2) + " ");
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+
